@@ -10,11 +10,11 @@ export default defineConfig({
       "/models": {
         target:
           process.env.NODE_ENV === "development"
-            ? "http://localhost:5173"
+            ? "http://localhost:5173/scroll-restaurant"
             : "https://aslmbk.github.io/scroll-restaurant/",
         changeOrigin: false,
-        rewrite: (path) =>
-          path.replace(/^\/models/, "/scroll-restaurant/models"),
+        // rewrite: (path) =>
+        //   path.replace(/^\/models/, "/scroll-restaurant/models"),
       },
     },
   },
