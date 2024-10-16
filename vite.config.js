@@ -5,4 +5,17 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   base: "/scroll-restaurant/",
+  server: {
+    proxy: {
+      "/models": {
+        target:
+          process.env.NODE_ENV === "development"
+            ? "http://localhost:5173"
+            : "https://aslmbk.github.io/scroll-restaurant/",
+        changeOrigin: false,
+        rewrite: (path) =>
+          path.replace(/^\/models/, "/scroll-restaurant/models"),
+      },
+    },
+  },
 });
